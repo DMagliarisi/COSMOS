@@ -1,0 +1,33 @@
+{
+    "TASK_GENERATOR_PARAMS": {
+        // Probabilità relative SOLO per i tipi di task real-time (somma = 1)
+        "beta_probabilities": {
+            "Generic_Service": 0.4,
+            "CPU_Intensive": 0.35,
+            "CPU_and_Data_Intensive": 0.25
+        },
+        // Ranges di dimensione (in MB)
+        "size_ranges_MB": {
+            // Generic e CPU-Intensive - LOW (10 KB – 88 KB)
+            "GENERIC_CPU_RANGE": [0.01, 0.088],
+
+            // CPU_and_Data_Intensive
+            "CPU_DATA_INTENSIVE": {
+                "alpha_M_weight": 0.3,       // P(Media)
+                "alpha_H_weight": 0.5,       // P(Alta)
+                "alpha_VH_weight": 0.2,      // P(Altissima)
+                "M_range": [0.022, 2.2],     // 22KB–2.2MB
+                "H_range": [2.2, 24.2],      // 2.2MB–24.2MB
+                "VH_range": [132.5, 500.0]   // 132.5MB–500MB
+            },
+
+            // Batch - solo Data-Intensive
+            "BATCH_TASK": {
+                "gamma_H_weight": 0.7,
+                "gamma_VH_weight": 0.3,
+                "H_range": [2.2, 24.2],
+                "VH_range": [132.5, 500.0]
+            }
+        }
+    }
+}
