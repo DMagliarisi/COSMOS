@@ -1,6 +1,6 @@
 # Handling Heterogeneous Satellite Computing Services with Energy and QoS Constraints
 
-This repository contains the Discrete Event Simulator (DES) and the source code used for the experimental evaluation presented in the paper "Handling Heterogeneous Satellite Computing Services with Energy and QoS Constraints".
+This repository contains the Discrete Event Simulator (DES) and the source code used for the experimental evaluation.
 
 The project simulates a Low Earth Orbit (LEO) satellite mega-constellation (based on Starlink orbital parameters) to evaluate various Satellite Computing Service Handling (SCSH) strategies and Routing protocols under heterogeneous workloads and strict constraints (energy, deadline, storage).
 
