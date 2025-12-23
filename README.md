@@ -6,7 +6,7 @@ The project simulates a Low Earth Orbit (LEO) satellite mega-constellation (base
 
 ## 🚀 Key Features
 
-Realistic LEO Constellation: Utilizes SGP4 propagator with real TLE data (Starlink) from CelesTrak.
+Realistic LEO Constellation: Utilizes SGP4 propagator with real TLE data (Starlink).
 
 Heterogeneous Environment: Models satellites (SENs) with varying CPU capacities, memory, storage, and energy budgets.
 
