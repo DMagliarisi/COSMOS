@@ -1,4 +1,4 @@
-Satellite Computing Discrete Event Simulator
+**Satellite Computing Discrete Event Simulator**
 
 📖 Overview
 
