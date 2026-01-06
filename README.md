@@ -1,93 +1,101 @@
-**Satellite Computing Discrete Event Simulator**
 
-📖 Overview
+# **Satellite Computing Discrete Event Simulator**
 
-This repository contains the Discrete Event Simulator (DES), which enables the simulation of a satellite computing system deployed on a Low Earth Orbit (LEO) satellite mega-constellation, based on Starlink orbital parameters.
+## 📖 Overview
 
-The simulator has been used to evaluate Satellite Computing Service Handling (SCSH) strategies and satellite routing protocols under heterogeneous workloads and strict constraints.
-🚀 Key Features
+This repository contains the **Discrete Event Simulator (DES)**, which enables the simulation of a satellite computing system deployed on a **Low Earth Orbit (LEO)** satellite mega-constellation, based on **Starlink** orbital parameters.
 
-    Realistic LEO Constellation: Utilizes SGP4 propagator with real TLE data (Starlink) to model orbital mechanics and visibility windows.
+The simulator has been used to evaluate **Satellite Computing Service Handling (SCSH)** strategies and satellite routing protocols under heterogeneous workloads and strict constraints.
 
-    Heterogeneous Environment: Models Satellite Edge Nodes (SENs) with varying CPU capacities, memory limits, storage, and energy budgets.
+## 🚀 Key Features
 
-    Heterogeneous Workload: Supports the generation and handling of diverse service types:
-
-        Generic services (Low resource demand).
-
-        CPU-intensive services (High computational cost).
-
-        CPU and Data-intensive services (High computation and transmission requirements).
-
-        Batch Data-intensive services (Large file transfers).
-
-    Service Handling Strategies: Implements and compares heuristic strategies (DTS-base, DTS-APopt, OrbitAware) against optimization-based approaches (ILP, ILP-Hierarchical).
+* **Realistic LEO Constellation:** Utilizes SGP4 propagator with real TLE data (Starlink) to model orbital mechanics and visibility windows.
+* **Heterogeneous Environment:** Models Satellite Edge Nodes (SENs) with varying CPU capacities, memory limits, storage, and energy budgets.
+* **Heterogeneous Workload:** Supports the generation and handling of diverse service types:
+* *Generic services* (Low resource demand).
+* *CPU-intensive services* (High computational cost).
+* *CPU and Data-intensive services* (High computation and transmission requirements).
+* *Batch Data-intensive services* (Large file transfers).
 
 
-🏃 Usage & Execution
+* **Service Handling Strategies:** Implements and compares heuristic strategies (`DTS-base`, `DTS-APopt`, `OrbitAware`) against optimization-based approaches (`ILP`, `ILP-Hierarchical`).
+* **Routing Protocols:** Includes implementations of Proactive (**B.A.T.M.A.N.**) and Reactive (**Greedy**, **Dynamic**) routing algorithms for ISL (Inter-Satellite Link) communication.
 
-The simulator is configured via the config.json5 file. The execution flow requires two steps: first, generating the constellation topology/orbits, and second, running the actual simulation experiments.
-1. Configuration Setup
+---
 
-Ensure the configuration files are present in the data/ directory:
+## 🏃 Usage & Execution
 
-    config.json5: Main simulation parameters.
+The simulator is configured via the `config.json5` file. The execution flow requires two steps: first, generating the constellation topology/orbits, and second, running the actual simulation experiments.
 
-    img_resolution.json5: Task size and resolution definitions.
+### 1. Configuration Setup
 
-2. Step 1: Topology Generation
+Ensure the configuration files are present in the `data/` directory:
+
+* `config.json5`: Main simulation parameters.
+* `img_resolution.json5`: Task size and resolution definitions.
+
+### 2. Step 1: Topology Generation
 
 Before running any workload simulation, the satellite orbital positions and contact plans must be generated.
 
-    Open config.json5.
+1. Open `config.json5`.
+2. Set the following parameters:
 
-    Set the following parameters:
-    Snippet di codice
-
+```json5
 {
   "Build_Configurations": true,
   "Load_Configuration": false,
   // ... other parameters
 }
 
-Run the script:
-Bash
+```
 
-    python main.py
+3. Run the script:
 
-    This process generates the orbital data and saves it locally. It will exit automatically upon completion ("File of configurations created").
+```bash
+python main.py
 
-3. Step 2: Running the Simulation
+```
+
+> This process generates the orbital data and saves it locally. It will exit automatically upon completion (*"File of configurations created"*).
+
+### 3. Step 2: Running the Simulation
 
 Once the topology is built, you can run the experiments.
 
-    Open data/config.json5.
+1. Open `data/config.json5`.
+2. Switch the mode to loading:
 
-    Switch the mode to loading:
-    Snippet di codice
-
+```json5
 {
   "Build_Configurations": false,
   "Load_Configuration": true,
   // ...
 }
 
-Run the simulation:
+```
 
-    python main.py
+3. Run the simulation:
 
-4. Reproducing Specific Strategies
+```bash
+python main.py
 
-To reproduce the specific strategies discussed in the paper (DTS-base, DTS-APopt, OrbitAware, ILP), you must modify the specific parameters in config.json5 as per the table below:
-Strategy	request_distribution	AP_selection	SearchNode
-DTS-base	"DTS-base"	"base"	"ERT"
-DTS-APopt	"DTS-base"	"optimal"	"ERT"
-OrbitAware	"OrbitAware"	"optimal"	"ERT"
-ILP	"DTS-base"	"optimal"	"ILP"
+```
 
-Example configuration for OrbitAware:
-Snippet di codice
+### 4. Reproducing Specific Strategies
 
+To reproduce the specific strategies discussed in the paper (**DTS-base**, **DTS-APopt**, **OrbitAware**, **ILP**), you must modify the specific parameters in `config.json5` as per the table below:
+
+| Strategy | `request_distribution` | `AP_selection` | `SearchNode` |
+| --- | --- | --- | --- |
+| **DTS-base** | `"DTS-base"` | `"base"` | `"ERT"` |
+| **DTS-APopt** | `"DTS-base"` | `"optimal"` | `"ERT"` |
+| **OrbitAware** | `"OrbitAware"` | `"optimal"` | `"ERT"` |
+| **ILP** | `"DTS-base"` | `"optimal"` | `"ILP"` |
+
+**Example configuration for OrbitAware:**
+
+```json5
 {
   "request_distribution": { "distribution": "OrbitAware" },
   "AP_selection": "optimal",
@@ -96,25 +104,23 @@ Snippet di codice
   // ...
 }
 
-5. Reproducing Sensitivity Analyses
+```
 
-To reproduce the graphs (e.g., varying arrival rates or energy budgets), you need to manually update the corresponding value in config.json5 and re-run main.py for each data point.
+### 5. Reproducing Sensitivity Analyses
 
-    Varying Workload: Change arrival_time_exponential (lower value = higher frequency).
+To reproduce the graphs (e.g., varying arrival rates or energy budgets), you need to manually update the corresponding value in `config.json5` and re-run `main.py` for each data point.
 
-        Note: The paper refers to req/s (λ). If the config expects inter-arrival time (seconds), time=1/λ.
+* **Varying Workload:** Change `arrival_time_exponential` (lower value = higher frequency).
+* *Note:* The paper refers to req/s (). If the config expects inter-arrival time (seconds), .
+* *Example for 10 req/s:* `"arrival_time_exponential": 0.1`
 
-        Example for 10 req/s: "arrival_time_exponential": 0.1
 
-    Varying Energy: Change "initial_energy" (e.g., 80000, 100000, 120000).
+* **Varying Energy:** Change `"initial_energy"` (e.g., `80000`, `100000`, `120000`).
 
-6. Output Data
+### 6. Output Data
 
-The simulation results are saved in the result/ directory, structured by experiment parameters (Strategy, Deadline, Energy, Seed).
+The simulation results are saved in the `result/` directory, structured by experiment parameters (Strategy, Deadline, Energy, Seed).
 
-    Results CSV: Contains detailed metrics for every task (Completed/Rejected).
-
-    Migration CSV: Tracks task relocations.
-
-    Energy Stats: Aggregated energy consumption per satellite.
-    Routing Protocols: Includes implementations of Proactive (B.A.T.M.A.N.) and Reactive (Greedy, Dynamic) routing algorithms for ISL (Inter-Satellite Link) communication.
+* **Results CSV:** Contains detailed metrics for every task (Completed/Rejected).
+* **Migration CSV:** Tracks task relocations.
+* **Energy Stats:** Aggregated energy consumption per satellite.
