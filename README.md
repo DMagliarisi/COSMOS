@@ -29,7 +29,7 @@ The simulator is configured via the `config.json5` file. The execution flow requ
 
 ### 1. Configuration Setup
 
-Ensure the configuration files are present in the `data/` directory:
+Ensure the configuration files are present in the main directory:
 
 * `config.json5`: Main simulation parameters.
 * `img_resolution.json5`: Task size and resolution definitions.
@@ -52,7 +52,7 @@ Before running any workload simulation, the satellite orbital positions and cont
 
 3. Run the script:
 
-```bash
+```
 python main.py
 
 ```
@@ -63,7 +63,7 @@ python main.py
 
 Once the topology is built, you can run the experiments.
 
-1. Open `data/config.json5`.
+1. Open `config.json5`.
 2. Switch the mode to loading:
 
 ```json5
@@ -77,7 +77,7 @@ Once the topology is built, you can run the experiments.
 
 3. Run the simulation:
 
-```bash
+```
 python main.py
 
 ```
