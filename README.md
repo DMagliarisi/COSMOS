@@ -1,4 +1,3 @@
-.
 Satellite Computing Discrete Event Simulator
 
 📖 Overview
