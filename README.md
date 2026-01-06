@@ -73,7 +73,6 @@ Once the topology is built, you can run the experiments.
 }
 
 Run the simulation:
-Bash
 
     python main.py
 
