@@ -1,3 +1,12 @@
+"""
+Definition of the Task class for managing tasks in the satellite network simulation.
+
+This module defines the `Task` class used to represent computational tasks
+that are routed through a constellation of LEO satellites. It includes attributes
+for tracking the task's source, destination, hop count, routing times, and
+algorithms used. Additionally, it provides utility functions for task status
+reporting and resolution assignment based on resource requirements.
+"""
 import sys
 import globals
 import json5, csv
