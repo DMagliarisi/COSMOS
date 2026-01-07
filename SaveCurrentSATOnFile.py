@@ -1,3 +1,10 @@
+"""
+Module to fetch and save current TLE data of active satellites.
+
+This module retrieves the latest TLE (Two-Line Element) data for active
+satellites from Celestrak and saves it to a local file for use in
+satellite network simulations.
+"""
 import sys
 import requests
 import os
