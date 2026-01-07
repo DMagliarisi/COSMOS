@@ -1,3 +1,11 @@
+"""
+Module for simulating the OGM (Originator Generated Message) environment.
+
+This module sets up a simulation environment to process OGMs exchanged
+between satellites and an observer. It includes functions to run the
+simulation for a specified duration, allowing for the pre-loading of OGM
+tables, and to clean up initial configurations used for table filling.
+"""
 import sys
 import simpy
 from enums import AccPointMode
