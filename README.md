@@ -51,7 +51,7 @@ The execution flow requires two steps: first, generating the constellation topol
 
 2. Configuration Setup
 
-Ensure the configuration files are present in the data/ directory:
+Ensure the configuration files are present in the main directory:
 
     config.json5: Main simulation parameters.
 
@@ -84,9 +84,9 @@ Before running any workload simulation, the satellite orbital positions and cont
 
 Once the topology is built, you can run the experiments.
 
-    Open data/config.json5.
+   Open data/config.json5.
 
-    Switch the mode to loading:
+   Switch the mode to loading:
 
 
 ``` {
