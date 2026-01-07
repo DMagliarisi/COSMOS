@@ -1,3 +1,11 @@
+"""
+Module for utility functions in the satellite network simulation.
+
+This module includes helper functions for sending tasks between satellites,
+calculating transmission times, and colorizing terminal output for better
+readability.
+"""
+
 import globals
 
 def sendTask(env, task, sender, receiver, algorithm):
