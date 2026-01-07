@@ -12,10 +12,10 @@ The simulator has been used to evaluate **Satellite Computing Service Handling (
 * **Realistic LEO Constellation:** Utilizes SGP4 propagator with real TLE data (Starlink) to model orbital mechanics and visibility windows.
 * **Heterogeneous Environment:** Models Satellite Edge Nodes (SENs) with varying CPU capacities, memory limits, storage, and energy budgets.
 * **Heterogeneous Workload:** Supports the generation and handling of diverse service types:
-- *Generic services* (Low resource demand).
-- *CPU-intensive services* (High computational cost).
-- *CPU and Data-intensive services* (High computation and transmission requirements).
-- *Batch Data-intensive services* (Large file transfers).
+ *Generic services* (Low resource demand).
+ *CPU-intensive services* (High computational cost).
+ *CPU and Data-intensive services* (High computation and transmission requirements).
+ *Batch Data-intensive services* (Large file transfers).
 
 
 * **Service Handling Strategies:** Implements and compares heuristic strategies (`DTS-base`, `DTS-APopt`, `OrbitAware`) against optimization-based approaches (`ILP`, `ILP-Hierarchical`).
