@@ -1,3 +1,26 @@
+"""
+Core Simulation Logic and Heuristics
+====================================
+
+This module contains the primary SimPy processes that drive the simulation's
+operational phase. It handles the lifecycle of tasks from generation to completion.
+
+Key Components:
+---------------
+* **Task Generation**: Stochastic generation of tasks (`generate_tasks`) based on
+  configured distributions and profiles.
+* **Physical Execution**: The `TaskAssignment` process simulates the actual time
+  spent in CPU and Network queues, managing resource contention and energy consumption.
+* **Heuristic Strategy**: Implements the `SearchNode_Heuristic_v1` logic (and helpers)
+  to select the best offloading target when optimization solvers (ILP) are not used.
+* **Batch Processing**: Specialized handling for background data transfer tasks.
+
+Dependencies:
+-------------
+* `simpy`: For discrete-event simulation.
+* `globals`: For configuration and shared state.
+* `ILP_simulation`: For the alternative optimization-based scheduling strategy.
+"""
 import globals
 import experiments
 from Task import Task
