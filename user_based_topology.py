@@ -1,3 +1,11 @@
+"""
+Module for user-based topology management in a LEO satellite constellation.
+
+This module provides functions to create and manage the satellite topology
+based on the user's position on Earth. It includes utilities for loading TLE
+data, computing satellite proximities, and filtering satellites based on
+visibility and access point criteria.
+"""
 import json5
 from math import sqrt
 from datetime import timedelta
