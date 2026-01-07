@@ -1,3 +1,10 @@
+"""
+Type definitions and enumerations for configuration management.
+
+This module defines shared type aliases, enumerations, and TypedDict
+structures used to formalize data types involved in configuration
+management.
+"""
 from enum import StrEnum, auto
 from typing import TypedDict, Any, List, Dict
 
