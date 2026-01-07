@@ -1,3 +1,21 @@
+"""
+Observer management and utility functions for task and position handling.
+
+This module provides:
+
+1. `Observer` class:
+   - Represents the simulation observer, tracking tasks, packets, and OGM
+     history.
+   - Provides methods to retrieve geolocation and projected 3D position
+     vectors.
+   - Supports printing task summaries in a formatted table.
+
+2. `ObserverMeta` singleton metaclass:
+   - Ensures only one Observer instance exists at a time.
+
+3. Utility functions:
+   - `format_mb`: formats memory values (MB/GB) for display purposes.
+"""
 import globals
 from collections import OrderedDict
 from skyfield.api import wgs84
