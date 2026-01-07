@@ -1,3 +1,20 @@
+"""
+Statistical Distributions Module
+================================
+
+This module provides wrapper functions for generating random numbers based on
+statistical distributions, primarily Exponential.
+
+It is designed to ensure **simulation reproducibility** by utilizing the centralized
+NumPy random number generator defined in `globals.rnd_np`. It also handles compatibility
+between different NumPy generator interfaces (Legacy `RandomState` vs New `Generator`).
+
+Key Functions:
+--------------
+* `exponential`: Standard exponential distribution (e.g., for inter-arrival times).
+* `truncated_exponential_trunc`: Rejection sampling for bounded values.
+* `truncated_exponential_unbounded`: Wrapper for unbounded generation with a compatible signature.
+"""
 import globals
 
 # Carica config solo se ti serve localmente (puoi comunque leggere da globals.config)
