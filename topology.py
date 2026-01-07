@@ -1,3 +1,11 @@
+"""
+Module for creating and managing the satellite topology in a LEO constellation.
+
+This module provides functions to create the satellite topology based
+on the current satellite positions and their interconnectivity. It includes 
+utilities for computing distances, managing satellite events, and updating
+the network topology dynamically during the simulation.
+"""
 import sys
 import globals
 import json, json5
