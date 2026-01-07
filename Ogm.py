@@ -1,3 +1,11 @@
+"""
+Definition of the OGM (Originator Generated Message) class.
+
+This module defines the `Ogm` class used to represent messages exchanged
+between nodes in the satellite network simulation. It includes metadata
+about the originator, sender, TTL, sequence number, and origin position, 
+and provides utilities for cloning the message for forwarding purposes.
+"""
 class Ogm:
     def __init__(self, originator, sender, origin_position_vect, is_AP, ttl, sequence_number=0):
         self.originator = originator
