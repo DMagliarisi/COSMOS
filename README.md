@@ -30,13 +30,12 @@ It is recommended to use a virtual environment to manage dependencies and avoid 
 
 Create a virtual environment:
 
-python3 -m venv venv
+``` python3 -m venv venv ```
 
 Activate the virtual environment:
-
-    On Linux/macOS:
-
-source venv/bin/activate
+On Linux/macOS:
+    
+    source venv/bin/activate
 
 On Windows:
 
@@ -44,9 +43,12 @@ On Windows:
 
 Install dependencies: Once the environment is active, install the required libraries from requirements.txt:
 
-pip install -r requirements.txt
+```
+ pip install -r requirements.txt
+```
+The simulator is configured via the config.json5 file. 
+The execution flow requires two steps: first, generating the constellation topology/orbits, and second, running the actual simulation experiments.
 
-The simulator is configured via the config.json5 file. The execution flow requires two steps: first, generating the constellation topology/orbits, and second, running the actual simulation experiments.
 2. Configuration Setup
 
 Ensure the configuration files are present in the data/ directory:
@@ -59,22 +61,24 @@ Ensure the configuration files are present in the data/ directory:
 
 Before running any workload simulation, the satellite orbital positions and contact plans must be generated.
 
-    Open config.json5.
+   Open config.json5.
 
-    Set the following parameters:
+   Set the following parameters:
 
 
+```
 {
   "Build_Configurations": true,
   "Load_Configuration": false,
   // ... other parameters
 }
+```
 
-    Run the script:
+   Run the script:
 
-python main.py
+``` python main.py ```
 
-    This process generates the orbital data and saves it locally. It will exit automatically upon completion ("File of configurations created").
+   This process generates the orbital data and saves it locally. It will exit automatically upon completion ("File of configurations created").
 
 4. Step 2: Running the Simulation
 
@@ -84,16 +88,18 @@ Once the topology is built, you can run the experiments.
 
     Switch the mode to loading:
 
-{
+
+``` {
   "Build_Configurations": false,
   "Load_Configuration": true,
   // ...
 }
+```
 
-    Run the simulation:
+Run the simulation:
 
 
-python main.py
+``` python main.py ```
 
 ### 5. Reproducing Sensitivity Analyses
 
