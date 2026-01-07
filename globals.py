@@ -1,4 +1,27 @@
-# globals.py (modificato per supportare SIM_CONFIG / sys.argv fallback)
+"""
+Global State and Configuration Management
+=========================================
+
+This module acts as the central repository for the simulation's shared state, configuration data,
+and global objects. It is responsible for bootstrapping the simulation environment by:
+
+1.  **Resolving Configuration Paths**: Determining which configuration files to load based on
+    environment variables, command-line arguments, or default values.
+2.  **Loading Configurations**: Parsing ``json5`` files for simulation parameters and task profiles.
+3.  **Initializing Randomness**: Setting up seeded random number generators (Python `random` and NumPy)
+    to ensure simulation reproducibility.
+4.  **Managing Global State**: Declaring and initializing global counters, lists (e.g., `edge_servers`),
+    and synchronization primitives (locks) used across different modules.
+
+Usage
+-----
+Importing this module immediately triggers the configuration loading process.
+It should be imported early in the `main.py` execution flow.
+
+>>> import globals
+>>> print(globals.config["simulation_duration"])
+>>> rng_val = globals.rnd.random()
+"""
 import threading
 import os
 import sys
