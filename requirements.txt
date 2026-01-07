@@ -1,0 +1,12 @@
+certifi==2026.1.4
+charset-normalizer==3.4.4
+idna==3.11
+jplephem==2.23
+json5==0.13.0
+numpy==2.4.0
+PuLP==3.3.0
+requests==2.32.5
+sgp4==2.25
+simpy==4.1.1
+skyfield==1.53
+urllib3==2.6.2
