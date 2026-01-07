@@ -1,3 +1,32 @@
+"""
+Satellite Network Simulation Entry Point
+========================================
+
+This script serves as the main driver for the LEO Satellite Edge Computing simulation.
+It integrates discrete-event simulation (SimPy) with orbital mechanics (Skyfield) and
+optimization logic (ILP/Heuristics) to evaluate task offloading performance.
+
+Workflow:
+---------
+1.  **Initialization**: Sets up the SimPy environment and loads global configurations.
+2.  **Topology Setup**: Loads satellite TLE data, calculates orbits, and establishes
+    inter-satellite links (ISLs) or ground connections based on the specified mode
+    (Access Point selection, Routing Algorithm).
+3.  **Task Scheduling**:
+    * Initializes background loads (Batch tasks) on satellites.
+    * Starts the dynamic task generator (`generate_tasks`).
+4.  **Simulation Execution**: Runs the simulation for the configured duration, handling
+    task processing, energy consumption, and network routing.
+5.  **Data Collection & Logging**:
+    * Periodically snapshots network state via `data_collector`.
+    * Exports detailed CSV logs for Task Lifecycle, Migration, and Energy Statistics.
+    * Saves final datasets in JSON5 format.
+
+Output:
+-------
+Results are saved in a structured directory tree under `result/`, organized by:
+Solver Type -> Weights -> Deadline -> Energy Budget -> Image Resolution Profile.
+"""
 import csv
 import json5
 import os
