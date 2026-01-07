@@ -1,3 +1,29 @@
+"""
+ILP-Based Task Scheduling Module
+================================
+
+This module implements the logic for assigning and executing tasks within a satellite
+network using an optimization-based approach (ILP).
+
+It handles the lifecycle of a task from the decision phase (searching for the best node)
+to the execution phase (CPU processing and Network transmission).
+
+Key Components:
+---------------
+* **TaskAssignment_ILP**: A SimPy process simulating the physical execution of a task
+  (queuing, CPU processing, energy consumption, and downlink/network transfer).
+* **SearchNode_ILP_Hybrid_v2**: The decision-making entry point. It constructs a local
+  network snapshot ($E_k$) and invokes an ILP solver to find the optimal node.
+  It includes fallback mechanisms for robustness.
+* **Snapshot Construction**: Helpers (`_build_snapshot_Ek`, `_merge_queues_for_ilp`)
+  to format simulation state into data structures compatible with the solver.
+
+Dependencies:
+-------------
+* `simpy`: For discrete-event simulation.
+* `sec_ilp_snapshot_v3`: Custom module containing the solver logic and data structures.
+* `globals`: Access to global configuration and simulation state.
+"""
 import globals
 from Task import Task
 from sec_ilp_snapshot_v3 import solve_on_Ek, Snapshot, SENState, QueueTask, alpha_from_physics, solve_on_Ek_hierarchical
