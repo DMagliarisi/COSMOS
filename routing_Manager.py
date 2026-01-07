@@ -1,3 +1,12 @@
+"""
+Routing, packet, and OGM management for the satellite edge computing simulation.
+
+This module handles the creation, forwarding, and history management of Originator
+Generated Messages (OGMs) and dynamic packets used in the DSR (Dynamic Source Routing)
+protocol within a simulated constellation of LEO satellites and ground observers.
+It includes functions for managing OGM propagation, packet routing, and periodic
+routing updates.
+"""
 import json
 from utils import colorize, sendTask
 from packet import Mode, Packet
