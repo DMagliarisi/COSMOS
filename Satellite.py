@@ -1,3 +1,11 @@
+"""
+    Definition of the Satellite class.
+
+    This module defines the `Satellite` class used to represent satellites
+    in the satellite network simulation. It includes attributes for the
+    satellite's TLE data, distance from the observer, access point status.
+"""
+
 from skyfield.api import EarthSatellite
 
 class Satellite:
