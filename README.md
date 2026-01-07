@@ -25,86 +25,75 @@ The simulator has been used to evaluate **Satellite Computing Service Handling (
 
 ## 🏃 Usage & Execution
 
-The simulator is configured via the `config.json5` file. The execution flow requires two steps: first, generating the constellation topology/orbits, and second, running the actual simulation experiments.
+It is recommended to use a virtual environment to manage dependencies and avoid conflicts.
+1. Environment Setup
 
-### 1. Configuration Setup
+Create a virtual environment:
 
-Ensure the configuration files are present in the main directory:
+python3 -m venv venv
 
-* `config.json5`: Main simulation parameters.
-* `img_resolution.json5`: Task size and resolution definitions.
+Activate the virtual environment:
 
-### 2. Step 1: Topology Generation
+    On Linux/macOS:
+
+source venv/bin/activate
+
+On Windows:
+
+    venv\Scripts\activate
+
+Install dependencies: Once the environment is active, install the required libraries from requirements.txt:
+
+pip install -r requirements.txt
+
+The simulator is configured via the config.json5 file. The execution flow requires two steps: first, generating the constellation topology/orbits, and second, running the actual simulation experiments.
+2. Configuration Setup
+
+Ensure the configuration files are present in the data/ directory:
+
+    config.json5: Main simulation parameters.
+
+    img_resolution.json5: Task size and resolution definitions.
+
+3. Step 1: Topology Generation
 
 Before running any workload simulation, the satellite orbital positions and contact plans must be generated.
 
-1. Open `config.json5`.
-2. Set the following parameters:
+    Open config.json5.
 
-```json5
+    Set the following parameters:
+
+
 {
   "Build_Configurations": true,
   "Load_Configuration": false,
   // ... other parameters
 }
 
-```
+    Run the script:
 
-3. Run the script:
-
-```
 python main.py
 
-```
+    This process generates the orbital data and saves it locally. It will exit automatically upon completion ("File of configurations created").
 
-> This process generates the orbital data and saves it locally. It will exit automatically upon completion (*"File of configurations created"*).
-
-### 3. Step 2: Running the Simulation
+4. Step 2: Running the Simulation
 
 Once the topology is built, you can run the experiments.
 
-1. Open `config.json5`.
-2. Switch the mode to loading:
+    Open data/config.json5.
 
-```json5
+    Switch the mode to loading:
+
 {
   "Build_Configurations": false,
   "Load_Configuration": true,
   // ...
 }
 
-```
+    Run the simulation:
 
-3. Run the simulation:
 
-```
 python main.py
-
-```
-
-### 4. Reproducing Specific Strategies
-
-To reproduce the specific strategies discussed in the paper (**DTS-base**, **DTS-APopt**, **OrbitAware**, **ILP**), you must modify the specific parameters in `config.json5` as per the table below:
-
-| Strategy | `request_distribution` | `AP_selection` | `SearchNode` |
-| --- | --- | --- | --- |
-| **DTS-base** | `"DTS-base"` | `"base"` | `"ERT"` |
-| **DTS-APopt** | `"DTS-base"` | `"optimal"` | `"ERT"` |
-| **OrbitAware** | `"OrbitAware"` | `"optimal"` | `"ERT"` |
-| **ILP** | `"DTS-base"` | `"optimal"` | `"ILP"` |
-
-**Example configuration for OrbitAware:**
-
-```json5
-{
-  "request_distribution": { "distribution": "OrbitAware" },
-  "AP_selection": "optimal",
-  "SearchNode": "ERT",
-  "DTS": true,
-  // ...
-}
-
-```
 
 ### 5. Reproducing Sensitivity Analyses
 
