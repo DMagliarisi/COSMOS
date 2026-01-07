@@ -1,3 +1,28 @@
+"""
+EdgeServer Module
+=================
+
+This module defines the `EdgeServer` class, which represents a Low Earth Orbit (LEO) satellite
+acting as an edge computing node within the simulation environment.
+
+The module integrates discrete event simulation (SimPy) with orbital mechanics (Skyfield)
+to simulate a dynamic satellite network.
+
+Key Functionalities:
+--------------------
+* **Dual-Stage Resource Model**: Manages separate queues for CPU (computation) and Network (transmission).
+* **Routing Logic**: Implements decisions for various routing algorithms (BATMAN, GREEDY, DSR)
+    and handles packet forwarding based on orbital topology.
+* **Energy Management**: Simulates energy consumption for processing and transmission,
+    enforcing energy budgets and handling battery depletion.
+* **Metric Estimation**: Provides methods to estimate Waiting Times (W_cpu, W_net)
+    and calculate Selection Scores for task offloading decisions.
+
+Global Configuration:
+---------------------
+The module relies on a global configuration dictionary (`globals.config`) to set parameters
+such as CPU capacity, initial energy, and routing flags.
+"""
 import globals
 from math import sqrt
 import simpy
