@@ -1,5 +1,5 @@
 
-# **Satellite Computing Discrete Event Simulator**
+# **COSMOS (Computing, Orbit, Satellite Modeling and Simulation)**
 
 ## 📖 Overview
 
